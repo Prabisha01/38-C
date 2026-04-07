@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Week 1</title>
+  </head>
+  <body>
+    <header>
+      <h1>ST5007CEM Web Development</h1>
+      <p>Week 1 HTML</p>
+    </header>
+
+    <nav>
+      <a href="#links">Links</a> | <a href="#lists">Lists</a> |
+      <a href="#table">Table</a> | <a href="#form">Form</a> |
+      <a href="#media">Media</a> |
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+      <section id="intro">
+        <h2>Introduction</h2>
+        <p>This page demonstrates the basic HTML elements learned in class.</p>
+        <p>
+          It includes semantic structure, hyperlinks, images, lists, tables,
+          forms, media, maps, and SVG graphics.
+        </p>
+      </section>
+
+      <section id="links">
+        <h2>Hyperlinks and Images</h2>
+
+        <p>
+          <a
+            href="https://c4mpus.com/modules/st5007cem-web-development/html-caWq20729"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit the module page
+          </a>
+        </p>
+
+        <p><a href="about.html">Go to About Page</a></p>
+
+        <p><a href="#contact">Jump to Contact Section</a></p>
+
+        <p><a href="mailto:[email protected]">Send an Email</a></p>
+
+        <figure>
+          <img
+            src="justification.png"
+            alt="Example classroom image"
+            width="500"
+            height="300"
+            loading="lazy"
+          />
+          <figcaption>This is an example image with alt text.</figcaption>
+        </figure>
+      </section>
+
+      <section id="lists">
+        <h2>Lists</h2>
+
+        <h3>Steps to Make Salt Water</h3>
+        <ol>
+          <li>
+            Add water
+            <ul>
+              <li>At 30 Celsius</li>
+              <li>At 60 Celsius</li>
+            </ul>
+          </li>
+          <li>Add salt</li>
+          <li>Mix properly</li>
+        </ol>
+
+        <h3>Technologies to Learn</h3>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+        </ul>
+      </section>
+
+      <section id="table">
+        <h2>Table Example</h2>
+
+        <table border="1">
+          <caption>
+            Student Roles
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alice</td>
+              <td>Developer</td>
+            </tr>
+            <tr>
+              <td>Bob</td>
+              <td>Designer</td>
+            </tr>
+            <tr>
+              <td>John</td>
+              <td>Tester</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="form">
+        <h2>Form Example</h2>
+
+        <form action="/submit" method="POST">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required
+          />
+
+          <br /><br />
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+
+          <br /><br />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter password"
+          />
+
+          <br /><br />
+
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" min="1" max="100" />
+
+          <br /><br />
+
+          <label>Gender</label>
+          <input type="radio" id="male" name="gender" value="male" />
+          <label for="male">Male</label>
+
+          <input type="radio" id="female" name="gender" value="female" />
+          <label for="female">Female</label>
+
+          <br /><br />
+
+          <label for="course">Course</label>
+          <select id="course" name="course">
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="javascript">JavaScript</option>
+          </select>
+
+          <br /><br />
+
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob" />
+
+          <br /><br />
+
+          <label for="file">Upload File</label>
+          <input type="file" id="file" name="file" />
+
+          <br /><br />
+
+          <label for="website">Website</label>
+          <input
+            type="url"
+            id="website"
+            name="website"
+            placeholder="https://example.com"
+          />
+
+          <br /><br />
+
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="98XXXXXXXX" />
+
+          <br /><br />
+
+          <label for="range">Satisfaction Level</label>
+          <input type="range" id="range" name="range" min="0" max="10" />
+
+          <br /><br />
+
+          <input type="checkbox" id="agree" name="agree" />
+          <label for="agree">I agree to the terms and conditions</label>
+
+          <br /><br />
+
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </form>
+      </section>
+
+      <section id="media">
+        <h2>Media and Embeds</h2>
+
+        <h3>Audio</h3>
+        <audio controls src="sound.mp3">
+          Your browser does not support audio.
+        </audio>
+
+        <h3>Video</h3>
+        <video controls width="400" poster="justification.png">
+          <source src="Avatar video final.mp4" type="video/mp4" />
+          Your browser does not support video.
+        </video>
+
+        <h3>Google Map</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6672.663459954619!2d85.39782882201047!3d27.69630768572803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1af8623fd56d%3A0x349d2e9b4e133a7f!2sNil%20Barahi%20Temple!5e0!3m2!1sen!2snp!4v1774966111962!5m2!1sen!2snp"
+          width="600"
+          height="450"
+          title="Map showing Nil Barahi Temple"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+
+        <h3>SVG Circle</h3>
+        <svg
+          viewBox="0 0 100 100"
+          width="200"
+          height="200"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="50" cy="50" r="40" fill="red"></circle>
+        </svg>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Section</h2>
+        <p>This is the contact section.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>End of HTML Week 1 Demo Page</p>
+    </footer>
+  </body>
+</html>
