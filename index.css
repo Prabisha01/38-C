@@ -1,0 +1,82 @@
+/* tags styling example*/
+h1{
+    background-color: bisque;
+    color: blue;
+    font-size: 16px;
+    margin-left: 36px;
+}
+/* class selector*/
+.demoram{
+    background-color: aquamarine;
+}
+/* id  selector*/
+#new{
+     background-color: antiquewhite;
+}
+/* apply to all*/
+*{
+    background-color: cadetblue;
+}
+/* link inside nav */
+nav a {
+    background-color: aqua;
+}
+
+/* email input field */
+input[type = "email"]{
+    background-color: blue;
+}
+/* when mouse over h1 */
+h1:hover{
+    color: blue;
+}
+input:focus{
+ outline: 10px solid rgb(5, 5, 10);
+}
+
+#demot{
+    background-color: rgb(210, 113, 44);
+}
+/* box styling */
+.hello{
+    width: 450px;
+    min-height: 150px;
+    padding: 16px;
+    box-sizing: border-box;  /* include padding in width */
+    text-decoration: underline;
+    background-color: var(--secondarycolor);
+    margin: auto; /* center */
+}
+/* global colors */
+:root{
+    --brandcolor : #6cc16c;
+    --secondarycolor : #580348;
+}
+
+/* fixed position (stays on screen) */
+.displayPos{
+    position: fixed;
+   font-size: 100px;
+   background-color: rgb(18, 28, 28);
+   color: #6cc16c;
+}
+/* parent container */
+.parent{
+    position: relative;  /* reference for child */
+    background-color: #580348;
+    width: 100%;
+    height: 100px;
+}
+/* child inside parent */
+.child{
+    position:  absolute;
+    top: 0;
+    right: 0;
+
+}
+
+/* sticky element */
+.sticky{
+    position: sticky;
+    top: 0;
+}

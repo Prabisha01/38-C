@@ -4,18 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      h1 {
+        background-color: aqua;
+      }
+    </style>
   </head>
-
   <body>
     <main>
       <section class="hello">
         <h1 id="new">amazing</h1>
-        <a
-          href=" https://c4mpus.com/modules/st5007cem-web-development/html-caWq20729"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Click Me</a
-        >
+        <p class="demoram">This is for the class</p>
+        <nav>
+          <a
+            href=" https://c4mpus.com/modules/st5007cem-web-development/html-caWq20729"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Click Me</a
+          >
+          <a
+            href=" https://c4mpus.com/modules/st5007cem-web-development/html-caWq20729"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Click
+          </a>
+        </nav>
+        <div class="sticky">This is for sticky</div>
+        <p>List 1</p>
+        <p>List 2</p>
+        <p>List 3</p>
+        <p>List 4</p>
+        <p>List 5</p>
+        <p>List 6</p>
+
         <img src="justification.png" alt="Hello" width="78px" />
         <a href="#contact">Click me to go to the new about page</a>
       </section>
@@ -23,7 +45,9 @@
         <p>Hello</p>
       </section>
       <section>
-        <p>This is the order and unordered list</p>
+        <p id="demot" style="background-color: blue">
+          This is the order and unordered list
+        </p>
         <ul>
           <li>Apple</li>
           <ol>
@@ -39,6 +63,7 @@
       </section>
       <section>
         <p>This is table</p>
+        <div class="displayPos">Block 2</div>
         <table border="1">
           <thead>
             <tr>
@@ -84,6 +109,10 @@
           <button>Click me</button>
         </form>
       </section>
+      <div class="parent">
+        Parent
+        <div class="child">child</div>
+      </div>
       <section>For the audio</section>
       <audio controls src="sound.mp3">This is not playing</audio>
       <iframe
@@ -96,6 +125,12 @@
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
       <footer>@copywrite</footer>
+      <div class="displayPos">Block 1</div>
+      <div class="displayPos">Block 2</div>
+      <div class="parent">
+        Parent
+        <div class="child">child</div>
+      </div>
     </main>
   </body>
 </html>
