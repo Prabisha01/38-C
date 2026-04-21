@@ -1,0 +1,28 @@
+.top-bar{
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+ 
+
+}
+
+.menu a{
+    text-decoration: none;
+    margin: 0 10px;
+    
+}
+
+.side-bar{
+    display: flex;
+
+}
+
+.left-bar{
+    background-color: blue;
+    width: 30%;
+    height: 800px;
+}
+.right-bar{
+    width: 70%;
+}
