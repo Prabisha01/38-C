@@ -123,3 +123,57 @@ console.log(greet("Alcie", 98));
 
 const greet = (name, age) => `Hello ${name} age is ${age}`;
 console.log(greet("Alcie", 98));
+
+const passedPercentage = (marks) => {
+  if (marks > 80) return `Distinction`;
+  else if (marks > 60) return `First Division`;
+  else return `Fail`;
+};
+console.log(passedPercentage(90));
+
+for (let i = 0; i <= 10; i++) {
+  console.log(i);
+}
+
+let arr = ["Hello", 9, "Hello"];
+for (let i = 0; i <= arr.length - 1; i++) {
+  console.log(arr[i]);
+}
+const student = [
+  { name: "hello", marks: 90, age: 90 },
+  { name: "hdsdello", marks: 90, age: 90 },
+  { name: "helfdlo", marks: 90, age: 78 },
+  { name: "heldfdlo", marks: 90, age: 78 },
+];
+
+const student1 = student.map((s) => s.name);
+console.log(student1);
+
+const student2 = student.filter((s) => s.age >= 90);
+console.log(student2);
+
+const student3 = student.find((s) => s.age === 90);
+console.log(student3);
+
+console.log(2 == "2");
+console.log(0 == false);
+console.log(0 === false);
+console.log(2 === "2");
+
+//Task given the password compare the
+//length if the password contains all the
+//uppercase, special character ,output should
+//be valid password else invalid
+//use arrow function and if else statement
+
+const passwordCheck = (password) => {
+  const uppercase = /[A-Z]/.test(password);
+  const lowercase = /[a-z]/.test(password);
+
+  if (uppercase && lowercase) {
+    console.log("valid");
+  } else {
+    console.log("invalid");
+  }
+};
+console.log(passwordCheck("@Khadka"));
