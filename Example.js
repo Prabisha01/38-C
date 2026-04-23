@@ -177,3 +177,113 @@ const passwordCheck = (password) => {
   }
 };
 console.log(passwordCheck("@Khadka"));
+
+const student = {
+  name: "Hello",
+  age: 67,
+  marks: 67,
+};
+
+console.log(student);
+//traditional
+// const name = student.name;
+// const age = student.age;
+// const marks = student.marks;
+// console.log(name, age, marks);
+
+//destructing
+const { name, age, marks } = student;
+console.log(name, age, marks);
+
+const arr = ["67", 9, 7];
+const [first, second, third] = arr;
+console.log(first, second, third);
+
+const arr = ["67", 9, 7];
+const [, , third] = arr;
+console.log(third);
+
+const student1 = [
+  {
+    name: "Helhhlo",
+    age: 687,
+    marks: 677,
+  },
+  {
+    name: "Hello",
+    age: 67,
+    marks: 67,
+  },
+];
+
+const { name, age, marks } = student1[0];
+console.log(name, age, marks);
+
+const student = {
+  name: "Hello",
+  age: 67,
+  marks: 67,
+};
+//wrong approach
+const arr1 = [2, 4, 6];
+const arr2 = [2, 4, 6];
+const updated = arr1 + arr2;
+console.log(updated);
+//..spread and Rest
+
+const arr3 = [2, 4, 6];
+const arr4 = [2, 4, 6];
+const updatedSpread = [...arr3, ...arr4];
+console.log(updatedSpread);
+
+const student1 = {
+  name: "Hello",
+  age: 67,
+  marks: 67,
+};
+const student2 = {
+  names: "Hello",
+  ages: 67,
+  markss: 67,
+};
+
+const studentUpdated = { ...student1, ...student2 };
+console.log(studentUpdated);
+
+const greet = (name, age, ...hobbies) => {
+  console.log(`${hobbies}`);
+};
+greet("alice", 7, "Batminton", "Basketball");
+
+const restArray = ["he", "Heelo", 76];
+const [first, ...remaining] = restArray;
+console.log(remaining);
+
+const first = (name) => {
+  console.log(`Hello ${name}`);
+};
+const second = (name) => {
+  console.log(`Bye ${name}`);
+};
+
+const processTheFirstandSecond = (nameUame, activi) => {
+  console.log(`Hello`);
+  activi(nameUame);
+};
+processTheFirstandSecond("ALice", first);
+processTheFirstandSecond("ALice", second);
+
+console.log("starting");
+setTimeout(() => {
+  console.log("helllo print this");
+}, 3000);
+console.log("end");
+
+console.log("end");
+async function MyFunction() {
+  console.log("hello");
+  setTimeout(() => {
+    console.log("helllo print this");
+  }, 3000);
+  console.log("help");
+}
