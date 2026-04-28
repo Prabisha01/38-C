@@ -282,8 +282,10 @@ console.log("end");
 console.log("end");
 async function MyFunction() {
   console.log("hello");
-  setTimeout(() => {
+  setTimeOut(() => {
     console.log("helllo print this");
   }, 3000);
   console.log("help");
 }
+MyFunction();
+
