@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const pool = require("./database/db");
+
 dotenv.config();
 
 const app = express();
@@ -14,6 +16,12 @@ app.get("/", (req, res) => {
   console.log("Server is running");
   res.send("The backend is running");
 });
+
+app.get("/db-config", async (req, res) => {
+  const result = await pool.query("Select * from students");
+  res.json(result.rows);
+});
+
 app.listen(PORT, () => {
   console.log(`Server is run  hhghghggfdfd ninghhhhh ${PORT}`);
 });
