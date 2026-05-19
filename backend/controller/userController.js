@@ -1,4 +1,4 @@
-const { createUser } = require("../model/userModel");
+const { createUser, existingUser } = require("../model/userModel");
 
 const addUser = async (req, res) => {
   try {
@@ -23,4 +23,36 @@ const addUser = async (req, res) => {
   }
 };
 
-module.exports = { addUser };
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.json({
+        message: "field empty jjsjdsjd",
+      });
+    }
+    const user = await existingUser(email);
+    if (!user) {
+      return res.json({
+        message: "email is not registered",
+      });
+    }
+    if (user.password != password) {
+      return res.json({
+        message: "password doesnot matched",
+      });
+    }
+    if (user) {
+      res.json({
+        message: "login successful",
+        user: user,
+      });
+    }
+  } catch (e) {
+    res.json({
+      message: "not successful",
+      e: e.message,
+    });
+  }
+};
+module.exports = { addUser, login };
