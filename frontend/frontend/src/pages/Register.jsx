@@ -1,17 +1,20 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { createUser } from "../service/Api";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
   const register = async () => {
     try {
       const data = { name, email, password };
       const response = await createUser(data);
       toast.success(response.data.message);
+      navigate("/contact")
     } catch (e) {
       toast.error(e.response.data.message || "error");
     }

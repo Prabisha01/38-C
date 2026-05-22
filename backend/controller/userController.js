@@ -4,19 +4,19 @@ const addUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
     if (!name || !email || !password) {
-      return res.json({
+      return res.status(400).json({
         message: "field empty",
       });
     }
     const user = await createUser(name, email, password);
     if (user) {
-      res.json({
+      res.status(201).json({
         message: "Created Successfully",
         user: user,
       });
     }
   } catch (e) {
-    res.json({
+    res.status(500).json({
       message: "unsuccessful",
       e: e.message,
     });
