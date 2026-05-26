@@ -10,11 +10,28 @@ const Register = () => {
 
   const navigate = useNavigate();
   const register = async () => {
+    if (!name || !email || !password) {
+      return toast.error("All fields are required");
+    }
+
+    if (name.length < 3) {
+      return toast.error("Name must be at least 3 characters");
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      return toast.error("Enter a valid email");
+    }
+
+    if (password.length < 6) {
+      return toast.error("Password must be at least 6 characters");
+    }
     try {
       const data = { name, email, password };
       const response = await createUser(data);
       toast.success(response.data.message);
-      navigate("/contact")
+      navigate("/login");
     } catch (e) {
       toast.error(e.response.data.message || "error");
     }

@@ -7,9 +7,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const login = async () => {
-    if (password.length < 8) {
-      toast.error("Passowrd should be more than 8");
-    }
     try {
       const data = { email, password };
       const response = await LoginUser(data);
