@@ -15,13 +15,13 @@ const Login = () => {
       toast.error(e.response?.data?.message || "Not successfull");
     }
   };
-  return;
+  return(
   <div>
     <div>Login</div>;
     <input type="email" onChange={(e) => setEmail(e.target.value)} />
     <input type="password" onChange={(e) => setPassword(e.target.value)} />
     <button onClick={login}>Click</button>
-  </div>;
+  </div>)
 };
 
 export default Login;
