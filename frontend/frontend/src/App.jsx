@@ -6,6 +6,7 @@ import ErrorFound from "./pages/ErrorFound";
 import Navbar from "./component/Navbar";
 import Register from "./pages/Register";
 import { Toaster } from "react-hot-toast";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<ErrorFound />} />
         <Route path="/register" element={<Register />} />
+           <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
