@@ -1,5 +1,5 @@
 const { createUser, existingUser } = require("../model/userModel");
-
+const bcrypt = require("bcrypt");
 const addUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -8,7 +8,8 @@ const addUser = async (req, res) => {
         message: "field empty",
       });
     }
-    const user = await createUser(name, email, password);
+    const hashpassword = await bcrypt.hash(password, 10);
+    const user = await createUser(name, email, hashpassword);
     if (user) {
       res.status(201).json({
         message: "Created Successfully",
@@ -37,7 +38,8 @@ const login = async (req, res) => {
         message: "email is not registered",
       });
     }
-    if (user.password != password) {
+    const isMatched = await bcrypt.compare(password, user.password);
+    if (!isMatched) {
       return res.json({
         message: "password doesnot matched",
       });
