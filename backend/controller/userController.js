@@ -28,13 +28,13 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
-      return res.json({
+      return res.status(400).json({
         message: "field empty jjsjdsjd",
       });
     }
     const user = await existingUser(email);
     if (!user) {
-      return res.json({
+      return res.status(404).json({
         message: "email is not registered",
       });
     }
@@ -45,13 +45,13 @@ const login = async (req, res) => {
       });
     }
     if (user) {
-      res.json({
+      res.status(200).json({
         message: "login successful",
         user: user,
       });
     }
   } catch (e) {
-    res.json({
+    res.status(500).json({
       message: "not successful",
       e: e.message,
     });

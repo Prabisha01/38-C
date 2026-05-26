@@ -7,6 +7,9 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const login = async () => {
+    if (password.length < 8) {
+      toast.error("Passowrd should be more than 8");
+    }
     try {
       const data = { email, password };
       const response = await LoginUser(data);
@@ -15,13 +18,14 @@ const Login = () => {
       toast.error(e.response?.data?.message || "Not successfull");
     }
   };
-  return(
-  <div>
-    <div>Login</div>;
-    <input type="email" onChange={(e) => setEmail(e.target.value)} />
-    <input type="password" onChange={(e) => setPassword(e.target.value)} />
-    <button onClick={login}>Click</button>
-  </div>)
+  return (
+    <div>
+      <div>Login</div>;
+      <input type="email" onChange={(e) => setEmail(e.target.value)} />
+      <input type="password" onChange={(e) => setPassword(e.target.value)} />
+      <button onClick={login}>Click</button>
+    </div>
+  );
 };
 
 export default Login;
