@@ -7,7 +7,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [image, setImage] = useState(null);
   const navigate = useNavigate();
   const register = async () => {
     if (!name || !email || !password) {
@@ -28,12 +28,16 @@ const Register = () => {
       return toast.error("Password must be at least 6 characters");
     }
     try {
-      const data = { name, email, password };
-      const response = await createUser(data);
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("image", image);
+      const response = await createUser(formData);
       toast.success(response.data.message);
       navigate("/login");
     } catch (e) {
-      toast.error(e.response.data.message || "error");
+      toast.error(e.response?.data?.message || "error");
     }
   };
   return (
@@ -54,6 +58,11 @@ const Register = () => {
         type="text"
         placeholder="Enetr the password"
         onChange={(e) => setPassword(e.target.value)}
+      />
+      <input
+        type="file"
+        placeholder="Enetr the password"
+        onChange={(e) => setImage(e.target.files[0])}
       />
       <button onClick={register}>Click</button>
     </div>
