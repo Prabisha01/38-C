@@ -14,4 +14,8 @@ const existingUser = async (email) => {
   return result.rows[0];
 };
 
-module.exports = { createUser, existingUser };
+const getAllUser = async () => {
+  const result = await pool.query("Select * from users");
+  return result.rows;
+};
+module.exports = { createUser, existingUser, getAllUser };

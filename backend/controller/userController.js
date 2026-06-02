@@ -1,5 +1,6 @@
-const { createUser, existingUser } = require("../model/userModel");
+const { createUser, existingUser, getAllUser } = require("../model/userModel");
 const bcrypt = require("bcrypt");
+const JWT = require("jsonwebtoken");
 const addUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -27,8 +28,8 @@ const addUser = async (req, res) => {
 
 const login = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    if (!email || !password) {
+    const { email, password: inputPassword } = req.body;
+    if (!email || !inputPassword) {
       return res.status(400).json({
         message: "field empty jjsjdsjd",
       });
@@ -39,18 +40,29 @@ const login = async (req, res) => {
         message: "email is not registered",
       });
     }
-    const isMatched = await bcrypt.compare(password, user.password);
+    const isMatched = await bcrypt.compare(inputPassword, user.password);
     if (!isMatched) {
       return res.json({
         message: "password doesnot matched",
       });
     }
-    if (user) {
-      res.status(200).json({
-        message: "login successful",
-        user: user,
-      });
-    }
+    const token = JWT.sign(
+      {
+        id: user.id,
+        email: user.email,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1d",
+      },
+    );
+    const { password, ...safeUser } = user;
+
+    res.status(200).json({
+      message: "login successful",
+      user: safeUser,
+      token,
+    });
   } catch (e) {
     res.status(500).json({
       message: "not successful",
@@ -58,4 +70,24 @@ const login = async (req, res) => {
     });
   }
 };
-module.exports = { addUser, login };
+
+const getAllUserFromTheDB = async (req, res) => {
+  try {
+    const user = await getAllUser();
+    if (!user || user.length == 0) {
+      return res.status(400).json({
+        message: "user is not present",
+      });
+    }
+    res.status(200).json({
+      message: "successful",
+      user: user,
+    });
+  } catch (e) {
+    res.status(500).json({
+      message: "unsuccessful",
+      e: e.message,
+    });
+  }
+};
+module.exports = { addUser, login, getAllUserFromTheDB };
