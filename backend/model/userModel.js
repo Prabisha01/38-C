@@ -20,9 +20,17 @@ const getAllUser = async () => {
 };
 
 const getUserById = async (id) => {
-  const result = await pool.query(
-    "Select * from users where id = $1", [id]);
+  const result = await pool.query("Select * from users where id = $1", [id]);
   return result.rows[0];
 };
-module.exports = { createUser, 
-  existingUser, getAllUser, getUserById };
+const deleteUserById = async (id) => {
+  const result = await pool.query("delete from users where id = $1", [id]);
+  return result.rows[0];
+};
+module.exports = {
+  createUser,
+  existingUser,
+  deleteUserById,
+  getAllUser,
+  getUserById,
+};

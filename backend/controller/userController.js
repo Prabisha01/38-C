@@ -3,6 +3,7 @@ const {
   existingUser,
   getAllUser,
   getUserById,
+  deleteUserById,
 } = require("../model/userModel");
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
@@ -106,9 +107,9 @@ const getUserByIDDB = async (req, res) => {
       });
     }
     res.status(200).json({
-      message : "successfully fetched",
-      user: user
-    })
+      message: "successfully fetched",
+      user: user,
+    });
   } catch (e) {
     res.status(500).json({
       message: "unsuccessful",
@@ -116,4 +117,30 @@ const getUserByIDDB = async (req, res) => {
     });
   }
 };
-module.exports = { addUser, login, getAllUserFromTheDB ,getUserByIDDB};
+const deleteUserByIDDB = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await deleteUserById(id);
+    if (!user) {
+      return res.status(404).json({
+        message: "not found",
+      });
+    }
+    res.status(200).json({
+      message: "successfull deleted",
+      user: user,
+    });
+  } catch (e) {
+    res.status(500).json({
+      message: "unsuccessful",
+      e: e.message,
+    });
+  }
+};
+module.exports = {
+  addUser,
+  deleteUserByIDDB,
+  login,
+  getAllUserFromTheDB,
+  getUserByIDDB,
+};
