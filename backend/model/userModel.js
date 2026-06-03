@@ -18,4 +18,11 @@ const getAllUser = async () => {
   const result = await pool.query("Select * from users");
   return result.rows;
 };
-module.exports = { createUser, existingUser, getAllUser };
+
+const getUserById = async (id) => {
+  const result = await pool.query(
+    "Select * from users where id = $1", [id]);
+  return result.rows[0];
+};
+module.exports = { createUser, 
+  existingUser, getAllUser, getUserById };

@@ -1,4 +1,9 @@
-const { createUser, existingUser, getAllUser } = require("../model/userModel");
+const {
+  createUser,
+  existingUser,
+  getAllUser,
+  getUserById,
+} = require("../model/userModel");
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
 const addUser = async (req, res) => {
@@ -90,4 +95,25 @@ const getAllUserFromTheDB = async (req, res) => {
     });
   }
 };
-module.exports = { addUser, login, getAllUserFromTheDB };
+
+const getUserByIDDB = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await getUserById(id);
+    if (!user) {
+      return res.status(404).json({
+        message: "not found",
+      });
+    }
+    res.status(200).json({
+      message : "successfully fetched",
+      user: user
+    })
+  } catch (e) {
+    res.status(500).json({
+      message: "unsuccessful",
+      e: e.message,
+    });
+  }
+};
+module.exports = { addUser, login, getAllUserFromTheDB ,getUserByIDDB};
