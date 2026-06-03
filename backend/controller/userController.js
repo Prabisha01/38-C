@@ -121,11 +121,7 @@ const deleteUserByIDDB = async (req, res) => {
   try {
     const { id } = req.params;
     const user = await deleteUserById(id);
-    if (!user) {
-      return res.status(404).json({
-        message: "not found",
-      });
-    }
+
     res.status(200).json({
       message: "successfull deleted",
       user: user,
