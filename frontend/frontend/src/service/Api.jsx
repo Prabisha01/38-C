@@ -14,3 +14,7 @@ export const createUser = (data) => {
 export const LoginUser = (data) => {
   return Api.post("/api/login", data);
 };
+
+export const getAllUser = () => {
+  return Api.get("/api/getAll")
+}
