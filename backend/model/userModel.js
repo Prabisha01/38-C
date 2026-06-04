@@ -27,8 +27,15 @@ const deleteUserById = async (id) => {
   const result = await pool.query("delete from users where id = $1", [id]);
   return result.rows[0];
 };
+const updateById = async (id, name, email, password, image) => {
+  const result = await pool.query(
+    "update users set name = $1, email =$2, password =$3, image =$4 where id = $5 Returning id",
+    [name, email, password, image, id],
+  );
+};
 module.exports = {
   createUser,
+  updateById,
   existingUser,
   deleteUserById,
   getAllUser,

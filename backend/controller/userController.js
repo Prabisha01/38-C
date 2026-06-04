@@ -4,6 +4,7 @@ const {
   getAllUser,
   getUserById,
   deleteUserById,
+  updateById,
 } = require("../model/userModel");
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
@@ -133,10 +134,36 @@ const deleteUserByIDDB = async (req, res) => {
     });
   }
 };
+
+const updateUserIDBD = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, email, password } = req.body;
+    const image = req.file.filename;
+    if (!name || !email || !password) {
+      return res.status(400).json({
+        message: "filled empty",
+      });
+    }
+    const hashpassword = await bcrypt.hash(password, 10);
+    const user = await updateById(id, name, email, hashpassword, image);
+
+    res.status(200).json({
+      message: "updated successfully",
+      user: user,
+    });
+  } catch (e) {
+    res.status(500).json({
+      message: "unsuccessful",
+      e: e.message,
+    });
+  }
+};
 module.exports = {
   addUser,
   deleteUserByIDDB,
   login,
   getAllUserFromTheDB,
   getUserByIDDB,
+  updateUserIDBD,
 };
