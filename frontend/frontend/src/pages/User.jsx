@@ -19,8 +19,8 @@ const User = () => {
 
   return (
     <div>
-      <table>
-        <thead border="1">
+      <table border="1px" width="100%">
+        <thead >
           <tr>
             <th>Id</th>
             <th>name</th>
@@ -34,7 +34,17 @@ const User = () => {
               <td>{user.id}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
-              <td>{user.image}</td>
+              <td>
+                {user.image ? (
+                  <img
+                    src={`http://localhost:5000/uploads/${user.image}`}
+                    width="60px"
+                    height="50px"
+                  />
+                ) : (
+                  "No image"
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
