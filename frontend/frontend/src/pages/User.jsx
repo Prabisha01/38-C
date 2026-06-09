@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { getAllUser } from "../service/Api";
+import { useNavigate } from "react-router-dom";
 
 const User = () => {
   const [users, setUsers] = useState([]);
-
+  const navigate = useNavigate();
   const fetchUser = async () => {
     try {
       const response = await getAllUser();
@@ -17,15 +18,20 @@ const User = () => {
     fetchUser();
   }, []);
 
+  const handleEdit = (id) => {
+    navigate(`/edit/${id}`);
+  };
+
   return (
     <div>
       <table border="1px" width="100%">
-        <thead >
+        <thead>
           <tr>
             <th>Id</th>
             <th>name</th>
             <th>email</th>
             <th>image</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -44,6 +50,9 @@ const User = () => {
                 ) : (
                   "No image"
                 )}
+              </td>
+              <td>
+                <button onClick={() => handleEdit(user.id)}>Edit</button>
               </td>
             </tr>
           ))}

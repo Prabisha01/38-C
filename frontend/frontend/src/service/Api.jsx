@@ -16,5 +16,13 @@ export const LoginUser = (data) => {
 };
 
 export const getAllUser = () => {
-  return Api.get("/api/getAll")
-}
+  return Api.get("/api/getAll");
+};
+
+export const getUserById = (id) => {
+  return Api.get(`/api/getById/${id}`);
+};
+
+export const updateById = (id, data) => {
+  return Api.put(`/api/updateById/${id}`, data);
+};

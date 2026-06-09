@@ -8,11 +8,12 @@ import Register from "./pages/Register";
 import { Toaster } from "react-hot-toast";
 import Login from "./pages/Login";
 import User from "./pages/User";
+import EditUser from "./pages/EditUser";
 
 function App() {
   return (
     <BrowserRouter>
-      <Toaster/>
+      <Toaster />
       <Routes>
         <Route
           path="/about"
@@ -26,8 +27,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<ErrorFound />} />
         <Route path="/register" element={<Register />} />
-           <Route path="/login" element={<Login />} />
-           <Route path="/user" element={<User />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/edit/:id" element={<EditUser />} />
       </Routes>
     </BrowserRouter>
   );
