@@ -11,6 +11,8 @@ const EditUser = () => {
     password: "",
   });
   const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const [currentImage, setCurrentImage] = useState(null);
 
   const fetchUser = async () => {
     try {
@@ -20,6 +22,7 @@ const EditUser = () => {
         email: response.data.user.email,
         password: "",
       });
+      setCurrentImage(response.data.user.image);
     } catch (e) {
       toast.error("unsuccessful");
     }
@@ -34,6 +37,11 @@ const EditUser = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+    setPreview(URL.createObjectURL(file));
   };
 
   const handleSubmit = async (e) => {
@@ -53,6 +61,17 @@ const EditUser = () => {
   };
   return (
     <div>
+      <img
+        src={
+          preview
+            ? preview
+            : currentImage
+              ? `http://localhost:5000/uploads/${currentImage}`
+              : "No image"
+        }
+        width="45"
+        height="43"
+      />
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -72,7 +91,7 @@ const EditUser = () => {
           value={formData.password}
           onChange={handleChange}
         />
-        <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+        <input type="file" name="image" onChange={handleImageUpload} />
         <button type="submit">Click</button>
       </form>
     </div>
