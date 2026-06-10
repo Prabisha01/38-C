@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { getAllUser } from "../service/Api";
+import { getAllUser, deleteById } from "../service/Api";
 import { useNavigate } from "react-router-dom";
 
 const User = () => {
@@ -20,6 +20,20 @@ const User = () => {
 
   const handleEdit = (id) => {
     navigate(`/edit/${id}`);
+  };
+
+  const deleteUser = async (id) => {
+    const confirm = window.confirm("Are you want to delete");
+    if (!confirm) {
+      return;
+    }
+    try {
+      const response = await deleteById(id);
+      toast.success("Deleted");
+      fetchUser();
+    } catch (e) {
+      toast.error("Unsuccessful");
+    }
   };
 
   return (
@@ -53,6 +67,7 @@ const User = () => {
               </td>
               <td>
                 <button onClick={() => handleEdit(user.id)}>Edit</button>
+                <button onClick={() => deleteUser(user.id)}>Delete</button>
               </td>
             </tr>
           ))}

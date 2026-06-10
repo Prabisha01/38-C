@@ -26,3 +26,7 @@ export const getUserById = (id) => {
 export const updateById = (id, data) => {
   return Api.put(`/api/updateById/${id}`, data);
 };
+
+export const deleteById = (id) => {
+  return Api.delete(`/api/deleteById/${id}`);
+};
