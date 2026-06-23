@@ -22,6 +22,17 @@ app.get("/db-config", async (req, res) => {
   res.json(result.rows);
 });
 app.use("/api", userRoute);
-app.listen(PORT, () => {
-  console.log(`Server is run  hhghghggfdfd ninghhhhh ${PORT}`);
-});
+
+//for running npm run dev
+// app.listen(PORT, () => {
+//   console.log(`Server is run  hhghghggfdfd ninghhhhh ${PORT}`);
+// });
+
+//for executing test
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server is run  hhghghggfdfd ninghhhhh ${PORT}`);
+  });
+}
+
+module.exports = app;
