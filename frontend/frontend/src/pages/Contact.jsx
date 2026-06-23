@@ -1,7 +1,17 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const Contact = () => {
-  return <div>Contact</div>;
+  const navigate = useNavigate();
+  const removeToken = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    navigate("/login");
+  };
+  return (
+    <div>
+      <button>Logout</button>
+    </div>
+  );
 };
 
 export default Contact;
