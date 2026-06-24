@@ -5,18 +5,27 @@ import { useNavigate } from "react-router-dom";
 
 const User = () => {
   const [users, setUsers] = useState([]);
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
-  const fetchUser = async () => {
+  const fetchUser = async (keyword) => {
     try {
-      const response = await getAllUser();
+      const response = await getAllUser(keyword);
       setUsers(response.data.user);
     } catch (e) {
       toast.error("unsuccessfull");
     }
   };
   useEffect(() => {
-    fetchUser();
+    fetchUser("");
   }, []);
+
+  useEffect(() => {
+    fetchUser(search);
+  }, [search]);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
 
   const handleEdit = (id) => {
     navigate(`/edit/${id}`);
@@ -38,6 +47,12 @@ const User = () => {
 
   return (
     <div>
+      <input
+        type="text"
+        placeholder="Search"
+        value={search}
+        onChange={handleSearch}
+      />
       <table border="1px" width="100%">
         <thead>
           <tr>

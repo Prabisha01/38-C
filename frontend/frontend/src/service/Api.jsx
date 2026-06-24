@@ -20,8 +20,10 @@ export const LoginUser = (data) => {
   return Api.post("/api/login", data);
 };
 
-export const getAllUser = () => {
-  return Api.get("/api/getAll");
+export const getAllUser = (search = "") => {
+  return Api.get("/api/getAll", {
+    params: { search },
+  });
 };
 
 export const getUserById = (id) => {
