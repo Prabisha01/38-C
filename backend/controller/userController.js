@@ -5,6 +5,7 @@ const {
   getUserById,
   deleteUserById,
   updateById,
+  searchUser,
 } = require("../model/userModel");
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
@@ -79,8 +80,30 @@ const login = async (req, res) => {
   }
 };
 
+const getUsers = async (req, res) => {
+  try {
+    const { search } = req.query;
+    let user;
+    if (search) {
+      user = await searchUser(search);
+    } else {
+      user = await getAllUser();
+    }
+    res.json({
+      message: "successful",
+      user: user,
+    });
+  } catch (e) {
+    res.status(500).json({
+      message: "unsuccessfull fetch",
+      e: e.message,
+    });
+  }
+};
+
 const getAllUserFromTheDB = async (req, res) => {
   try {
+    
     const user = await getAllUser();
     if (!user || user.length == 0) {
       return res.status(400).json({
@@ -167,4 +190,5 @@ module.exports = {
   getAllUserFromTheDB,
   getUserByIDDB,
   updateUserIDBD,
+  getUsers,
 };

@@ -19,6 +19,13 @@ const getAllUser = async () => {
   return result.rows;
 };
 
+const searchUser = async (keyword) => {
+  const result = await pool.query(
+    "select * from users where name ILike $1 or email like $1",
+    [`%${keyword}%`],
+  );
+  return result.rows;
+};
 const getUserById = async (id) => {
   const result = await pool.query("Select * from users where id = $1", [id]);
   return result.rows[0];
@@ -40,4 +47,5 @@ module.exports = {
   deleteUserById,
   getAllUser,
   getUserById,
+  searchUser,
 };
